@@ -61,7 +61,9 @@ const server = http.createServer(async (req, res) => {
 
   if (req.method === 'GET' && url.pathname === '/health') {
     return sendJson(res, deviceKey ? 200 : 503, {
-      status: deviceKey ? 'ready' : 'missing GIFT_DEVICE_KEY', scannerId
+      status: deviceKey ? 'ready' : 'missing GIFT_DEVICE_KEY',
+      scannerId,
+      upstream: redeemUrl
     });
   }
 

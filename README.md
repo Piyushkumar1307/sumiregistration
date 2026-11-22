@@ -7,11 +7,11 @@ Camera-based one-time gift redemption for the `ReceivedItem` device and counter.
 ```bash
 npm install
 cp .env.example .env
-# set GIFT_DEVICE_KEY in your shell or environment manager
+# Edit .env and set GIFT_DEVICE_KEY to the raw gift-distribution key.
 npm start
 ```
 
-Open `http://localhost:3000`. The device key is intentionally held only by the server and is never sent to the browser.
+Open `http://localhost:3000`. The browser posts to the local `/api/redeem` proxy; the server then securely forwards to `https://airtelevents.in/api/v1/gift/redeem`. The device key is intentionally held only by the server and is never sent to the browser. Confirm the configured upstream at `http://localhost:3000/health`.
 
 ## Deploy on Render
 

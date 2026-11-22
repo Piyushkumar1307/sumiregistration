@@ -4,7 +4,7 @@
   "private": true,
   "description": "Secure web scanner for one-time gift distribution",
   "scripts": {
-    "start": "node server.js"
+    "start": "node --env-file-if-exists=.env server.js"
   },
   "dependencies": {
     "html5-qrcode": "^2.3.8"
