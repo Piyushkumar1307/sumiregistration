@@ -14,4 +14,4 @@ services:
       - key: SCANNER_ID
         value: ReceivedItem
       - key: GATE_ID
-        value: gift-desk
+        value: ReceivedItem

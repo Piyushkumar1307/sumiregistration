@@ -7,7 +7,8 @@ const port = Number(process.env.PORT || 3000);
 const apiBase = (process.env.GIFT_API_BASE || 'https://airtelevents.in').replace(/\/$/, '');
 const deviceKey = process.env.GIFT_DEVICE_KEY;
 const scannerId = process.env.SCANNER_ID || 'ReceivedItem';
-const gateId = process.env.GATE_ID || 'gift-desk';
+// The gift API identifies this distribution counter as ReceivedItem.
+const gateId = process.env.GATE_ID || 'ReceivedItem';
 const scannerVersion = process.env.SCANNER_VERSION || '1.0.0';
 const publicDir = path.join(__dirname, 'public');
 
