@@ -1,0 +1,15 @@
+{
+  "name": "gift-desk-scanner",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Secure web scanner for one-time gift distribution",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "html5-qrcode": "^2.3.8"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

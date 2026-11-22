@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#122c24">
+    <title>Gift Desk Scanner</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <main>
+      <header>
+        <div class="brand-mark" aria-hidden="true">✦</div>
+        <div><p class="eyebrow">EVENT OPERATIONS</p><h1>Gift desk</h1></div>
+        <span class="device">ReceivedItem</span>
+      </header>
+
+      <section class="scanner-card" aria-labelledby="scan-title">
+        <div class="scanner-head">
+          <div><p class="eyebrow">ONE GIFT PER ATTENDEE</p><h2 id="scan-title">Scan their entry QR</h2></div>
+          <span id="camera-status" class="camera-status">Camera off</span>
+        </div>
+        <div id="reader" class="reader" aria-label="QR code camera preview"></div>
+        <div class="actions">
+          <button id="start-camera" class="primary">Start camera</button>
+          <button id="stop-camera" class="secondary" hidden>Stop camera</button>
+        </div>
+        <p class="hint">Hold the attendee’s QR inside the frame. A successful scan records their gift immediately.</p>
+      </section>
+
+      <section id="result" class="result neutral" aria-live="assertive">
+        <div class="result-icon" id="result-icon">⌁</div>
+        <div><p class="result-label" id="result-label">READY TO SCAN</p><h2 id="result-title">Awaiting an attendee</h2><p id="result-message">Start the camera, then scan the same QR used for entry.</p></div>
+        <dl id="attendee-details" hidden></dl>
+        <button id="scan-next" class="secondary next" hidden>Scan next attendee</button>
+      </section>
+
+      <details class="manual">
+        <summary>Camera unavailable? Enter a QR code manually</summary>
+        <form id="manual-form">
+          <label for="token">QR code text</label>
+          <textarea id="token" name="token" rows="3" autocomplete="off" spellcheck="false" placeholder="EVP1.…" required></textarea>
+          <button class="secondary" type="submit">Check QR code</button>
+        </form>
+      </details>
+    </main>
+    <script src="/vendor/html5-qrcode.min.js"></script>
+    <script src="/app.js"></script>
+  </body>
+</html>

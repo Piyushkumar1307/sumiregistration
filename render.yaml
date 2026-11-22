@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: gift-desk-scanner
+    runtime: node
+    plan: free
+    buildCommand: npm ci --omit=dev
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: GIFT_DEVICE_KEY
+        sync: false
+      - key: GIFT_API_BASE
+        value: https://airtelevents.in
+      - key: SCANNER_ID
+        value: ReceivedItem
+      - key: GATE_ID
+        value: gift-desk
