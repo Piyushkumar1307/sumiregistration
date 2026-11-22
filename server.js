@@ -4,7 +4,9 @@ const path = require('node:path');
 const { randomUUID } = require('node:crypto');
 
 const port = Number(process.env.PORT || 3000);
-const apiBase = (process.env.GIFT_API_BASE || 'https://airtelevents.in').replace(/\/$/, '');
+// Keep this as the precise upstream endpoint supplied by the event API.
+// Using a full URL avoids accidentally composing a wrong path from a base URL.
+const redeemUrl = process.env.GIFT_REDEEM_URL || 'https://airtelevents.in/api/v1/gift/redeem';
 const deviceKey = process.env.GIFT_DEVICE_KEY;
 const scannerId = process.env.SCANNER_ID || 'ReceivedItem';
 // The gift API identifies this distribution counter as ReceivedItem.
@@ -70,14 +72,13 @@ const server = http.createServer(async (req, res) => {
       if (typeof token !== 'string' || !token.startsWith('EVP1.') || token.length > 512) {
         return sendJson(res, 400, { message: 'This QR code is not a valid event pass.' });
       }
+      // This mirrors the event team's cURL request. The API generates its own timestamp.
       const payload = {
         token,
         scanId: typeof scanId === 'string' && scanId ? scanId : randomUUID(),
-        scannerId,
-        scannerVersion,
         gateId
       };
-      const upstream = await fetch(`${apiBase}/api/v1/gift/redeem`, {
+      const upstream = await fetch(redeemUrl, {
         method: 'POST',
         headers: { Authorization: `Bearer ${deviceKey}`, 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),

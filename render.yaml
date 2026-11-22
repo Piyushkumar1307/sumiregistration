@@ -9,8 +9,8 @@ services:
     envVars:
       - key: GIFT_DEVICE_KEY
         sync: false
-      - key: GIFT_API_BASE
-        value: https://airtelevents.in
+      - key: GIFT_REDEEM_URL
+        value: https://airtelevents.in/api/v1/gift/redeem
       - key: SCANNER_ID
         value: ReceivedItem
       - key: GATE_ID

@@ -1,6 +1,6 @@
 # Gift desk scanner
 
-Camera-based one-time gift redemption for the `ReceivedItem` device and counter. A green result means hand over the gift; an amber result means it was already given.
+Camera-based one-time gift redemption for the `ReceivedItem` device and counter. A green result means hand over the gift; an amber result means it was already given. The server securely forwards each scan to `https://airtelevents.in/api/v1/gift/redeem`.
 
 ## Run locally
 
